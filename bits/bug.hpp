@@ -3,9 +3,9 @@ ostream &operator<<(ostream &os, const pair<T1, T2> &p) {
   return os << '{' << p.first << ", " << p.second << '}';
 }
 
-template <class T, class = decay_t<decltype(*begin(declval<T>()))>,
-          class = enable_if_t<!is_same<T, string>::value>>
-ostream &operator<<(ostream &os, const T &c) {
+template < class T, class = decay_t<decltype(*begin(declval<T>()))>,
+           class = enable_if_t < !is_same<T, string>::value >>
+ostream & operator<<(ostream &os, const T &c) {
   os << '[';
   for (auto it = c.begin(); it != c.end(); ++it)
     os << &", "[2 * (it == c.begin())] << *it;
@@ -24,5 +24,4 @@ ostream &operator<<(ostream &os, const T &c) {
   (MACRO, ##__VA_ARGS__)
 //Change output format here
 #define out(x) #x " = " << x << "; "
-#define bug(...)                                                              \
-  cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
+#define bug(...) cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n";
