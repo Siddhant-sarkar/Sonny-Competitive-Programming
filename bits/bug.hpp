@@ -1,3 +1,4 @@
+using namespace std;
 template <class T1, class T2>
 ostream &operator<<(ostream &os, const pair<T1, T2> &p) {
   return os << '{' << p.first << ", " << p.second << '}';
@@ -24,4 +25,4 @@ ostream & operator<<(ostream &os, const T &c) {
   (MACRO, ##__VA_ARGS__)
 //Change output format here
 #define out(x) #x " = " << x << "; "
-#define bug(...) cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n";
+#define dbg(...) cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n";
