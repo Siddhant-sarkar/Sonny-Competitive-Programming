@@ -15,7 +15,6 @@ int qry(int l , int r) {
 void update(int i, int v) {
 	for (; i <= N; i += (i & -i)) {bit[i] += v;}
 }
-
 int lw_bound(int x) {
 	int cp = 0, csum = 0;
 	for (int i = log2(x); i >= 0; i--) {
