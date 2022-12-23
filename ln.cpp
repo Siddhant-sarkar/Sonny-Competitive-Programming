@@ -1,42 +1,35 @@
 #include"bits/stdc++.h"
 using namespace std;
 
-int N;
-vector<int> ar, bit;
+const int LOG = 25;
+const int MAX_N = 1e5 + 10;
+
+int n, q;
+int ar[MAX_N];
+int spt[LOG][MAX_N];
 
 int qry(int l , int r) {
-	auto sum = [&](int i)->int{
-		int rt = 0;
-		for ( ; i > 0 ; i -= (i & -i)) { rt += bit[i]; }
-		return rt;
-	};
-	return sum(r) - sum(l - 1);
+	int lr = (r - l + 1);
+	int p = 0;
+	while (1 << (p + 1) <= lr)p++;
+	return min(spt[p][l] , spt[p][r - (1 << p) + 1 ]);
 }
-void update(int i, int v) {
-	for (; i <= N; i += (i & -i)) {bit[i] += v;}
-}
+int main() {
+	cin >> n ;
+	for (int i = 0; i < n; i++) { cin >> ar[i]; spt[0][i] = ar[i];}
 
-int lw_bound(int x) {
-	int cp = 0, csum = 0;
-	for (int i = log2(x); i >= 0; i--) {
-		if (bit[cp + (1 << i)] + csum < x) {
-			cp = cp + ( 1 << i);
-			csum += bit[cp];
+	// preprocessing of O(n*log(MAX_N))
+	for (int p = 1 ; p < LOG; p++ ) {
+		for (int j = 0; j + (1 << p) - 1 < n; j++)	{
+			spt[p][j] = min(spt[p - 1][j], spt[p - 1][j + (1 << (p - 1))]);
 		}
 	}
-	return ++cp;
-}
 
-
-
-int main() {
-	cin >> N;
-	ar.resize(N + 1); bit.resize(N + 1);
-	for (int i = 1; i <= N; i++) {
-		cin >> ar[i]; update(i, ar[i]);
+	//  process the queries in [l,r] inclusive
+	cin >> q;
+	while (q--) {
+		int l , r; cin >> l >> r;
+		cout << qry(l, r) << endl;
 	}
-
-	cout << qry(1, N) << endl;
-
 
 }
