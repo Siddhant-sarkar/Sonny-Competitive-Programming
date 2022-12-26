@@ -27,75 +27,69 @@ constexpr int MOD = 1e9 + 7;
 constexpr int INF = 1e18;
 constexpr int MXN = 3e5 + 10;
 
+
+int n , q;
+vi a(MXN);
+// struct for segment Tree.
 struct node {
-	int n, lzy;
-	node(int n = 0LL) {
-		this->n =  n;
-		this-> lzy = 0LL;
-	}
-};
+	int cs, psm, ssm, mss;
+	node(int x = 0 ) {
+		cs = x;
+		// psm = ssm = mss = x;
+		psm = max(0LL, x);
+		ssm = max(0LL, x);
+		mss = max(0LL, x);
 
-vi ar(MXN) ;
-node tr[4 * MXN];
-
-void push(int x , int l , int r) {
-	if (tr[x].lzy) {
-		tr[x].n += tr[x].lzy * (r - l + 1);
-		if ( l != r) {
-			tr[x << 1].lzy += tr[x].lzy;
-			tr[x << 1 | 1].lzy += tr[x].lzy;
-		}
-		tr[x].lzy = 0LL;
 	}
+} tr[4 * MXN];
+
+// function to merge a Tree
+node merge(node & a, node &b) {
+	node rt;
+	rt.cs = a.cs + b.cs;
+	rt.psm = max(a.psm, a.cs + b.psm);
+	rt.ssm = max(b.ssm, b.cs + a.ssm);
+	rt.mss = max({a.mss, b.mss, a.ssm + b.psm});
+	return rt;
 }
-node merge(node& a , node &b) { return node(a.n + b.n); }
-void build(int x, int l , int r) {
-	if (l == r) {
-		tr[x] = node(ar[l]);
+// CRUD functions in segment Tree
+void build(int x, int l , int r ) {
+	if ( l == r) {
+		tr[x] = node(a[l]);
 		return;
 	}
-	int m =  (l + r) >> 1;
+	int m = (l + r) / 2;
 	build(x << 1, l, m); build(x << 1 | 1, m + 1, r);
 	tr[x] = merge(tr[x << 1], tr[x << 1 | 1]);
 }
-void update(int x, int l , int r , int lq , int rq, int v) {
-	push(x, l, r);
-	if (rq < l || lq > r) return;
-	if (lq <= l && r <= rq) {
-		tr[x].lzy = v;
-		push(x, l, r);
+void update(int x, int l , int r, int p , int v) {
+	if ( p < l || p > r) return;
+	if (  l == r) {
+		tr[x] = node(v);
+		a[l] = v;
 		return;
 	}
-	int m = (l + r) >> 1;
-	update(x << 1, l, m, lq, rq, v); update(x << 1 | 1, m + 1, r, lq, rq, v);
-	tr[x] = merge(tr[x << 1] , tr[x << 1 | 1]);
+	int m = (l + r) / 2;
+	if (p <= m)update( x << 1 , l , m , p, v);
+	else update(x << 1 | 1 , m + 1, r, p, v);
+	tr[x] = merge(tr[x << 1], tr[x << 1 | 1]);
 }
-node qry(int x, int l , int r, int lq, int rq) {
-	push(x, l, r);
-	if (rq < l || lq > r) return node();
-	if (lq <= l && r <= rq) return tr[x];
-	int m = (l + r) >> 1;
-	node a = qry(x << 1, l, m, lq, rq); node b = qry(x << 1 | 1, m + 1, r, lq, rq);
+node query(int x , int l , int r, int lq , int rq) {
+	if (rq < l || lq > r) return node(0);
+	if ( lq <= l && r <= rq) return tr[x];
+
+	int m = (l + r) / 2;
+	node a = query(x << 1, l , m, lq, rq);
+	node b =   query(x << 1 | 1 , m + 1 , r, lq, rq);
 	return merge(a, b);
 }
-
-
 int32_t main() {
 	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
-	read(n); read(q);
-	rep(i, 0, n) cin >> ar[i];
-	build(1, 0, n - 1);
-	while (q--) {
-		read(ch);
-		if (ch == 1) {
-			read(l); read(r); read(v);
-			l--, r--;
-			update(1, 0, n - 1, l, r, v);
-		} else {
-			read(k);
-			k--;
-			cout << qry(1, 0, n - 1, k, k).n << nl;
-		}
-	}
+	cin >> n >> q;
+	rep(i, 0, n) cin >> a[i];
+
+	build(1, 0, n - 1); // build the Tree
+	update(1, 0, n - 1, 2, 8); // update
+	node x = query(1, 0, n - 1, 4, 9 ); // query which return the node.
 
 }

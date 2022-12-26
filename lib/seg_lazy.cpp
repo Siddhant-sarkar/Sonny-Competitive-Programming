@@ -94,7 +94,7 @@ int32_t main() {
 		} else {
 			read(k);
 			k--;
-			cout << qry(1, 0, n - 1, k, k).n << nl;
+			// cout << qry(1, 0, n - 1, k, k).n << nl;
 		}
 	}
 
