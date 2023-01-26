@@ -17,9 +17,6 @@ struct seg_tree {
 			}
 			return;
 		}
-		int m = (lx + rx) / 2;
-		bld(a, 2 * x + 1, lx, m); bld(a, 2 * x + 2, m, rx);
-		tr[x] = tr[2 * x + 1] + tr[2 * x + 2];
 	}
 	void bld(vector<int> &a) {
 		bld(a, 0, 0, sz);

@@ -21,6 +21,6 @@ struct DSU {
 	int sze(int a) { return sz[get(a)];}
 };
 
-int main(){
+int main() {
 
 }
