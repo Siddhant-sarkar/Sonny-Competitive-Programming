@@ -1,51 +1,53 @@
-#include"bits/stdc++.h"
+#include "bits/stdc++.h"
 using namespace std;
+#define int 		long long
+using vi 	= 		vector<int>;
+using vv 	= 		vector<vi>;
+using pi 	= 		pair<int, int>;
+using vp 	= 		vector<pi>;
 
-struct node {
-	node* child[26];
-	int prefix = 0, leaf = 0;
-	vector<string> wend;
-	node() { for (int i = 0; i < 26; i++) { prefix = 0; child[i] = NULL;} }
-};
+#define nl 			"\n"
+#define F 			first
+#define S 			second
 
-struct Trie {
-	node* t;
-	Trie() { t = new node(); }
-	void insert(string s) {
-		node* curr = t;
-		for (auto c : s) {
-			curr->prefix++;
-			int x = c - 'a';
-			if (curr->child[x] == NULL) {curr->child[x] = new node();}
-			curr = curr->child[x];
-		}
-		curr->wend.push_back(s);
-		curr->leaf = 1;
-	}
-	void remove(string &s) {
-		node * curr = t;
-		for (auto c : s) {
-			curr ->prefix--;
-			if (curr->child[c - 'a'] == NULL) return;
-			curr = curr->child[c - 'a'];
-		}
-		curr->wend.pop_back();
-	}
-	bool search(string &s) {
-		node* curr = t;
-		for (auto c : s) {
-			if (curr->child[c - 'a'] == NULL) return 0;
-			curr = curr->child[c - 'a'];
-		}
-		return 1;
-	}
+#define pb 			push_back
+#define sz(x) 		(int)x.size()
+#define read(x) 	int x; cin >> x
+#define all(s) 		s.begin(), s.end()
+#define rep(i,a,b) 	for(int i=a;i<=b;i++)
+#define rev(i,a,b) 	for(int i=a;i>=b;i--)
+#define rdvr(x)    	for(auto &it :x) cin >> it
 
-};
-int main() {
-	Trie* t = new Trie();
-	t->insert("siddhant");
-	t->insert("sid");
-	string s = "sidd";
-	cout << t->search(s) << endl;
+#ifdef TSUKI
+#include "bits/bug.hpp"
+#else
+#define dbg(...)
+#endif
+
+constexpr int MOD = 998244353;
+constexpr int INF = 1e18;
+constexpr int MXN = 2e5 + 10;
+
+void サンローラン_ドン() {
+	int n; cin >> n;
+	cout << "NEw program" << nl;
+	vi ar(n);
+	rep(i, 0, n - 1) cin >> a[i];
+	for (auto x : ar)  cout << x << " " ;
+	cout << nl;
+
+}
+
+
+
+
+int32_t main() {
+	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
+	int t = 1;
+	cin >> t;
+	rep(i, 1, t) {
+		// cerr << "Test " << i << nl;
+		サンローラン_ドン();
+	}
 
 }
