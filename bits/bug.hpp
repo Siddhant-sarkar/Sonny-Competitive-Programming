@@ -1,4 +1,5 @@
 // colout print
+#pragma once
 template <class T1, class T2>
 ostream &operator<<(ostream &os, const pair<T1, T2> &p) {
   return os << '{' << p.first << ", " << p.second << '}';
@@ -27,4 +28,4 @@ ostream & operator<<(ostream &os, const T &c) {
 #define dbg(...)                                                             \
   cerr << "\033[2;31mLine " << __LINE__ << ": \033[0;m";                       \
   FOR_EACH_MACRO(watch, __VA_ARGS__)                                           \
-  cerr << "\n"
+  cerr << "\n";

@@ -35,19 +35,18 @@ m1(re) { cin >> forward<T>(a); m2(cin >> ); }
 
 
 void サンローラン_ドン() {
-	int N; cin >> N;
-	cout << N << nl;
-	dbg(N);
+
 }
 int32_t main() {
 	clock_t tStart = clock();
 	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
 	int t = 1;
-	// cin >> t;
+	cin >> t;
+	cerr << " == == == == == = 死と生 == == == == == = \n";
 	rep(i, 1, t) {
 		cerr << "Test " << i << nl;
 		サンローラン_ドン();
 	}
-	cerr << "===========死と生===========";
-	cerr << "\n>> Runtime : " << (double)(clock() - tStart) / CLOCKS_PER_SEC << nl;
+	cerr << " == == == == == = 死と生 == == == == == = ";
+	cerr << "\n >> Runtime : " << (double)(clock() - tStart) / CLOCKS_PER_SEC << nl;
 }

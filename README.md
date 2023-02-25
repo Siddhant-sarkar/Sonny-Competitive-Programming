@@ -10,22 +10,12 @@
 3. Add a new build system.
 ```javascript
 {
-    "shell_cmd": "g++-12 -std=c++20 -O2 -Wall -Wshadow -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover -DTSUKI '${file}' -o '${file_base_name}' && osascript -e 'tell application \"iTerm2\" to tell current window to set newTab to (create tab with default profile)' -e 'tell application \"iTerm2\" to tell current session of current window to write text \" clear && ${file_path}/${file_base_name} < ${file_path}/inputf.in && read line && exit;      \"'",
+    "shell_cmd": " g++-12 -std=c++20 -O2 -Wall -Wshadow -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover -DTSUKI -H '${file}' -o '${file_base_name}' && echo 'cd \"${file_path}/\"' > '/tmp/${file_base_name}' && echo './\"${file_base_name}\"' >> '/tmp/${file_base_name}' && echo read >> '/tmp/${file_base_name}' && chmod +x '/tmp/${file_base_name}' && open -a iterm.app '/tmp/${file_base_name}'",
 
     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
     "working_dir": "${file_path}",
     "selector": "source.c++",
-
-    "variants":
-    [
-        {
-            "name": "Safe",
-            "shell_cmd": "g++-12 -std=c++20 -O2 -Wall -Wshadow -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover -DTSUKI '${file}' -o '${file_base_name}' && echo 'cd \"${file_path}/\"' > '/tmp/${file_base_name}' && echo './\"${file_base_name}\"' >> '/tmp/${file_base_name}' && echo read >> '/tmp/${file_base_name}' && chmod +x '/tmp/${file_base_name}' && open -a iterm.app '/tmp/${file_base_name}'",
-        },
-    ]
 }
-
-
 ```
 
 ## Compiler : GCC
