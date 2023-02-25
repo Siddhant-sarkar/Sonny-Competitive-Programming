@@ -37,7 +37,6 @@ m1(re) { cin >> forward<T>(a); m2(cin >> ); }
 void サンローラン_ドン() {
 	int N; cin >> N;
 	cout << N << nl;
-	dbg(N);
 }
 int32_t main() {
 	clock_t tStart = clock();
@@ -48,6 +47,6 @@ int32_t main() {
 		cerr << "Test " << i << nl;
 		サンローラン_ドン();
 	}
-	cerr << "===========死と生===========";
+	cerr << "==============================";
 	cerr << "\n>> Runtime : " << (double)(clock() - tStart) / CLOCKS_PER_SEC << nl;
 }
