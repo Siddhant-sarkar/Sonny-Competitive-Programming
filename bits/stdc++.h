@@ -1,6 +1,6 @@
 // C++ includes used for precompiling -*- C++ -*-
 
-// Copyright (C) 2003-2015 Free Software Foundation, Inc.
+// Copyright (C) 2003-2013 Free Software Foundation, Inc.
 //
 // This file is part of the GNU ISO C++ Library.  This library is free
 // software; you can redistribute it and/or modify it under the
@@ -24,7 +24,11 @@
 
 /** @file stdc++.h
  *  This is an implementation file for a precompiled header.
- */
+  */
+
+// Also writing "using namespace std;" here so that you dont need to write it everytime you start a cpp file
+
+
 
 // 17.4.1.2 Headers
 
@@ -52,7 +56,6 @@
 #include <ccomplex>
 #include <cfenv>
 #include <cinttypes>
-#include <cstdalign>
 #include <cstdbool>
 #include <cstdint>
 #include <ctgmath>
