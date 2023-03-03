@@ -8,14 +8,23 @@
 	3. Now clone repository
 `git clone https://github.com/Siddhant-sarkar/Senbonzakura.git`
 3. Add a new build system.
-```javascript
-{
-    "shell_cmd": " g++-12 -std=c++20 -O2 -Wall -Wshadow -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover -DTSUKI -H '${file}' -o '${file_base_name}' && echo 'cd \"${file_path}/\"' > '/tmp/${file_base_name}' && echo './\"${file_base_name}\"' >> '/tmp/${file_base_name}' && echo read >> '/tmp/${file_base_name}' && chmod +x '/tmp/${file_base_name}' && open -a iterm.app '/tmp/${file_base_name}'",
+```Makefile
+CC = g++-12
+CFLAGS = -std=c++20 -O2 -Wall -Wshadow -Wno-unused-variable -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover -DTSUKI 
+TARGET = _a       
+SRC = main.cpp       
 
-    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
-    "working_dir": "${file_path}",
-    "selector": "source.c++",
-}
+.PHONY: all 
+all: $(TARGET)
+	@gtimeout 2s ./$(TARGET) < inputf.in && echo 'Press any key to continue...' && read line && clear 
+inp: $(TARGET)
+	@echo 'Enter now ...' && ./$(TARGET) && echo 'Press any key to continue...' && read line && clear 
+
+
+$(TARGET):	$(SRC)
+	@$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+clean:
+	rm -f $(TARGET)
 ```
 
 ## Compiler : GCC
