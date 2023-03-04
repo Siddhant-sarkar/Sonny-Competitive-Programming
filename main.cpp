@@ -20,6 +20,15 @@ using vp 	= 		vector<pi>;
 #define rev(i,a,b) 	for(int i=a;i>=b;i--)
 #define rdvr(a,n)   vi a(n);for(auto &it :a) cin >> it
 
+// CUSTOM HASH
+struct chash {
+	size_t operator()(uint64_t x) const {
+		static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+		x ^= FIXED_RANDOM;
+		return x ^ (x >> 16);
+	}
+};
+
 //DEBUG HEADER FILE
 #ifdef TSUKI
 #include "bits/bug.hpp"
@@ -30,15 +39,15 @@ using vp 	= 		vector<pi>;
 //CONSTANTS
 constexpr int MOD = 998244353;
 constexpr int N = 2e5;
-
+//-----------------------------------私はマスターです -----------------------------------//
 void サンローラン_ドン() {
-	read(n); read(m);
+	read(n); read(k);
+	string a , b, x, y;
+	cin >> a >> b;
+	x = a, y = b; sort(all(x)); sort(all(y));
+	if (x != y ) { cout << "NO" << nl; return; }
 
-	dbg(n, m)
 }
-
-
-
 
 int32_t main() {
 	clock_t tStart = clock();

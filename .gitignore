@@ -33,3 +33,5 @@
 *.ip
 
 tests/**
+_a
+inputf.in
