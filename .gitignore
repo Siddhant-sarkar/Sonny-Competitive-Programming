@@ -32,6 +32,5 @@
 *.app
 *.ip
 
-tests/**
-_a
-inputf.in
+
+IO

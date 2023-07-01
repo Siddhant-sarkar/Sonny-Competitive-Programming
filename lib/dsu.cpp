@@ -17,10 +17,11 @@ struct DSU {
 		if (sz[a] < sz[b]) swap(a, b);
 		par[b] = a; sz[a] += sz[b];
 		return 1;
+
 	}
 	int sze(int a) { return sz[get(a)];}
 };
 
 int main() {
-
+	DSU *d = new DSU(100);
 }

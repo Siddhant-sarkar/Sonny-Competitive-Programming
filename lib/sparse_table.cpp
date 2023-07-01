@@ -11,8 +11,6 @@ int spt[LOG][MAX_N];
 int qry(int l , int r) {
 	int lr = (r - l + 1);
 	int p = 0;
-	// This thing can be doone using bin_LOG array
-	// here its is taking  O(log2(len)) time.
 	while (1 << (p + 1) <= lr)p++;
 	return min(spt[p][l] , spt[p][r - (1 << p) + 1 ]);
 }
