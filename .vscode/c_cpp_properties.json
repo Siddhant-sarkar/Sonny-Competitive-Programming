@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/local/bin/g++-12",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "compilerArgs": [
+                "--std=c++20 -O2 -Wall -DTSUKI -Wno-unused-variable"
+            ]
+        }
+    ],
+    "version": 4
+}

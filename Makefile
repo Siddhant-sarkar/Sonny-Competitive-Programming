@@ -1,7 +1,8 @@
-CC = g++-13
+CC = g++-12
 CFLAGS = -std=c++20 -O2 -Wall -Wshadow -Wno-unused-variable -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover -DTSUKI 
 CFFLAGS = -std=c++20 -O2 -Wall -Wshadow -Wno-unused-variable -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover  
 CFFLAGS = -std=c++20 -O2 -Wall -Wshadow -Wno-unused-variable -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover  
+CFLAGS = -std=c++20 -O2 -Wall -Wshadow -Wno-unused-variable -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond  -DTSUKI 
 TARGET = _a       
 SRC = main.cpp       
 
