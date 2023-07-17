@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 using namespace std;
 
 // TYPE NAME ALIASEs
@@ -20,8 +20,8 @@ template<class T> inline T& cmax(T& a, const T& b) { if (a < b) a = b; return a;
 //-----------------------------------------------------------Veni,vidi,vici-----------------------------------------------------------//
 //------------------------------------------------------I came ,I saw,I conquered-----------------------------------------------------//
 void solve() {
-ll n; cin >> n;
-
+    ll n,k; scanf("%lld%lld" , &n, &k);
+    printf("%lld %lld \n" , n ,k);
 }
 
 int32_t main() {
