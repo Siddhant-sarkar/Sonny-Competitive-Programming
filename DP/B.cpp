@@ -1,6 +1,5 @@
 #include "bits/stdc++.h"
 using namespace std;
-
 // TYPE NAME ALIASEs
 using ll		=		unsigned long long;
 using vi 		= 		vector<ll>;
@@ -14,6 +13,7 @@ using pi 		= 		pair<ll, ll>;
 #define pb 				push_back
 #define sz(x) 			(ll)x.size()
 #define all(s)			s.begin(), s.end()
+#define FRR(it, x)		for(auto &it :x)
 #define FOR(i,a,b)		for(ll i=a;i<=b;i++)
 #define ROF(i,a,b)		for(ll i=a;i>=b;i--)
 // CUSTOM HASH
@@ -42,7 +42,6 @@ ll fx_pow (ll a, ll b) {
 #else
 #define dbg(...)
 #endif
-
 //CONSTANTS
 constexpr ll MOD = 1e9 + 7;
 constexpr ll MXN = 4e4;
@@ -52,49 +51,29 @@ constexpr ll MX = 1e18;
 #define is(...) string __VA_ARGS__;read(__VA_ARGS__);
 template <typename... T>void read(T &...args) {((cin >> args), ...);}
 template <typename... T>void op(T... args) {((cout << args << " "), ...); cout << nl;}
-template <typename... T>void ops(T... args) {((cout << args << " "), ...); }
-//-----------------------------------------------------------ALONE_WOLF-----------------------------------------------------------//
+template <typename... T>void ops(T... args) {((cout << args << " "), ...);}
 
 void cp() {
-	io(n);
-	auto sum = [&](ll k , ll l) {
-		ll res = 1 + k + (k * k);
-		ll prd = k * k;
-		FOR(i, 1, l) {
-			prd *= k;
-			res += prd;
-		}
-		return res;
-	};
-	FOR(i, 0, 65) {
-		ll l = 1 , r = 2e5 + 10;
-		while ( r - l > 1) {
-			ll m = (l + r) / 2;
-			// dbg(l, m, r);
-			ll sm = sum(m , i);
-			if ( sm >=  n) {r = m;}
-			else l = m;
-		}
-		if ( r > 1 && sum( r, i) == n) {
-			op("YES");
-			return;
-		}
-		// dbg(l);
-	}
-	op("NO");
-}
+	io( n , k);
+	is(s);
+	set<char>st;
+	FOR(i, 1, k) {char c ; cin >> c; st.insert(c);}
 
+	vi dp(n + 1);
+	FOR(i, 1, n) {
+		if ( st.count(s[i - 1])) {
+			dp[i] = dp[i - 1] + 1;
+		} else {dp[i] = 0;}
+	}
+	cout << accumulate(all(dp), 0LL) << nl;
+}
 int32_t main() {
 	clock_t tStart = clock();
 	cin.tie(0) -> sync_with_stdio(0);
-	int t = 1; cin >> t;
-	FOR(i, 1, t) {
+	int t = 1;
+	// cin >> t;
+	FOR(i, 1, t) { cp(); }
 #ifdef TSUKI
-		cerr << "Test: " << i << "\n";
-#endif
-		cp();
-	}
-#ifdef TSUKI
-	cerr << ">> Runtime : " << (double)(clock() - tStart) / CLOCKS_PER_SEC << nl;
+	// cerr << ">> Runtime : " << (double)(clock() - tStart) / CLOCKS_PER_SEC << nl;
 #endif
 }

@@ -1,16 +1,16 @@
 using namespace std;
 template <class T1, class T2>
 ostream &operator<<(ostream &os, const pair<T1, T2> &p) {
-    return os << '{' << p.first << ", " << p.second << '}';
+  return os << '{' << p.first << ", " << p.second << '}';
 }
 
 template < class T, class = decay_t<decltype(*begin(declval<T>()))>,
            class = enable_if_t < !is_same<T, string>::value >>
 ostream & operator<<(ostream &os, const T &c) {
-    os << '[';
-    for (auto it = c.begin(); it != c.end(); ++it)
-        os << &", "[2 * (it == c.begin())] << *it;
-    return os << ']';
+  os << '[';
+  for (auto it = c.begin(); it != c.end(); ++it)
+    os << &", "[2 * (it == c.begin())] << *it;
+  return os << ']';
 }
 //support up to 5 args
 #define _NTH_ARG(_1, _2, _3, _4, _5, _6, N, ...) N
@@ -25,5 +25,5 @@ ostream & operator<<(ostream &os, const T &c) {
   (MACRO, ##__VA_ARGS__)
 //Change output format here
 #define out(x) #x " = " << x << "; "
-#define asdf(...)                                                              \
-  cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
+#define dbg(...)                                                              \
+  cerr << "\tLine " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"

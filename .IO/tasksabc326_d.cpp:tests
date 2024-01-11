@@ -1,0 +1,16 @@
+[
+	{
+		"correct_answers":
+		[
+			"Yes\nAC..B\n.BA.C\nC.BA.\nBA.C.\n..CBA"
+		],
+		"test": "5\nABCBC\nACAAB\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "3\nAAA\nBBB\n"
+	}
+]
