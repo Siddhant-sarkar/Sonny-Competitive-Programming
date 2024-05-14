@@ -2,7 +2,7 @@
 using namespace std;
 
 // TYPE NAME ALIASEs
-using ll		=		long long;
+using ll		=		unsigned long long;
 using vi 		= 		vector<ll>;
 using vv 		= 		vector<vi>;
 using pi 		= 		pair<ll, ll>;
@@ -13,9 +13,9 @@ using pi 		= 		pair<ll, ll>;
 // MACROS
 #define pb 				push_back
 #define sz(x) 			(ll)x.size()
-#define all(s) 			s.begin(), s.end()
-#define FOR(i,a,b) 		for(ll i=a;i<=b;i++)
-#define ROF(i,a,b) 		for(ll i=a;i>=b;i--)
+#define all(s)			s.begin(), s.end()
+#define FOR(i,a,b)		for(ll i=a;i<=b;i++)
+#define ROF(i,a,b)		for(ll i=a;i>=b;i--)
 // CUSTOM HASH
 struct chash {
 	size_t operator()(uint64_t x) const {
@@ -47,20 +47,25 @@ constexpr ll MOD = 1e9 + 7;
 constexpr ll MXN = 4e4;
 constexpr ll MX = 1e18;
 //VARIADIC IO
-#define io(...) int __VA_ARGS__;read(__VA_ARGS__);
-#define is(...) str __VA_ARGS__;read(__VA_ARGS__);
+#define io(...) ll __VA_ARGS__;read(__VA_ARGS__);
+#define is(...) string __VA_ARGS__;read(__VA_ARGS__);
 template <typename... T>void read(T &...args) {((cin >> args), ...);}
 template <typename... T>void op(T... args) {((cout << args << " "), ...); cout << nl;}
 template <typename... T>void ops(T... args) {((cout << args << " "), ...); }
 
-void 死ぬまで名誉() {
-
+void cp() {
+	io(n, k);
+	vv mat(n, vi(n));
 }
 
 int32_t main() {
 	clock_t tStart = clock();
-	cin.tie(0); cerr.tie(0); cout.tie(0) -> sync_with_stdio(0);
+	cin.tie(0) -> sync_with_stdio(0);
 	int t = 1; cin >> t;
-	FOR(i, 1, t) { 死ぬまで名誉(); }
-	cout << ">> Runtime : " << (double)(clock() - tStart) / CLOCKS_PER_SEC << nl;
+	FOR(i, 1, t) {
+		cp();
+	}
+#ifdef TSUKI
+	cerr << ">> Runtime : " << (double)(clock() - tStart) / CLOCKS_PER_SEC << nl;
+#endif
 }
