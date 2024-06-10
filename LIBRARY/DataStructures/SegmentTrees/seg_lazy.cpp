@@ -67,7 +67,8 @@ void update(int x, int l , int r , int lq , int rq, int v) {
 		return;
 	}
 	int m = (l + r) >> 1;
-	update(x << 1, l, m, lq, rq, v); update(x << 1 | 1, m + 1, r, lq, rq, v);
+	update(x << 1, l, m, lq, rq, v);
+	update(x << 1 | 1, m + 1, r, lq, rq, v);
 	tr[x] = merge(tr[x << 1] , tr[x << 1 | 1]);
 }
 node qry(int x, int l , int r, int lq, int rq) {

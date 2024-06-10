@@ -1,69 +1,93 @@
-#include"bits/stdc++.h"
+#include "bits/stdc++.h"
 using namespace std;
-#define int long long
-constexpr int N =  2e5 + 10;
 
-struct seg_tree {
-	int sz;
-	vector<int> tr;
-	void init(int n) {
-		sz = 1; while (sz < n) sz *= 2;
-		tr.assign(2 * sz, 0LL);
-	}
-	void bld(vector<int>&a , int x , int lx , int rx) {
-		if (rx - lx == 1) {
-			if (lx < (int) a.size() ) {
-				tr[x] = a[lx];
-			}
-			return;
-		}
-	}
-	void bld(vector<int> &a) {
-		bld(a, 0, 0, sz);
-	}
-	void set(int i , int v, int x, int lx, int rx ) {
-		if (rx - lx == 1) {
-			tr[x] = v;
-			return;
-		}
-		int m = (rx + lx) / 2;
-		if (i < m) set(i, v, 2 * x + 1, lx, m);
-		else set(i, v, 2 * x + 2, m, rx);
-		tr[x] = tr[2 * x + 1] + tr[2 * x + 2];
-	}
-	void set(int i , int v) {
-		set(i, v, 0, 0, sz);
-	}
-	int sum(int l , int r, int x, int lx, int rx) {
-		if (lx >= r || l >= rx ) return 0;
-		if (lx >= l && rx <= r) return tr[x];
-		int m = (lx + rx) / 2;
-		return sum(l, r, 2 * x + 1, lx, m) + sum(l, r, 2 * x + 2, m, rx);
+using ll = long long;
+using vi = vector<ll>;
+using vv = vector<vi>;
+using pi = pair<int, ll>;
+using vp = vector<pi>;
 
-	}
-	int sum (int l , int r) {
-		return sum(l, r, 0, 0, sz);
-	}
+#define nl 			"\n"
+#define F 			first
+#define S 			second
+#define pb 			push_back
+#define sz(x) 			(int)x.size()
+#define read(x) 		ll x; cin >> x
+#define all(s) 			s.begin(), s.end()
+#define FOR(i,a,b) 		for(int i=a;i<=b;i++)
+#define ROF(i,a,b) 		for(int i=a;i>=b;i--)
 
+constexpr ll MOD = 1e9 + 7;
+constexpr ll INF = 1e18;
+constexpr ll MXN = 3e5 + 10;
+
+struct node {
+	ll minimum , cnt;
+	node(ll x = INF ) {
+		//--> default initializer value.
+	}
 };
 
-int n , q;
-int a[N];
-signed main() {
-	cin >> n >> q;
-	vector<int> t(n);
-	for (int i = 0; i < n; i++) {
-		cin >> t[i];
+node merge(node& a, node& b) {
+	node rt;
+	//--> merge logic.
+	return rt;
+}
+struct SEGTREE {
+	ll N;
+	vector<node> tree;
+	SEGTREE(ll n , vi& ar) {
+		this-> N = n;
+		tree = vector<node>(4 * N);
+		build(ar, 1, 0, N - 1);
 	}
-	seg_tree tr; tr.init(n); tr.bld(t);
+	void build(vi& ar, ll x, ll l , ll r ) {
+		if ( l == r) {
+			tree[x] = node(ar[l]);
+			return;
+		}
+		ll m = (l + r) / 2;
+		build( ar, x << 1, l, m);
+		build( ar, x << 1 | 1, m + 1, r);
+		tree[x] = merge(tree[x << 1], tree[x << 1 | 1]);
+	}
+	void update(int x, int l , int r, int p , int v) {
+		if ( p < l || p > r) return;
+		if (  l == r ) {
+			tree[x] = node(v);
+			return;
+		}
+		int m = (l + r) / 2;
+ 		if (p <= m)update( x << 1 , l , m , p, v);
+		else update(x << 1 | 1 , m + 1, r, p, v);
+		tree[x] = merge(tree[x << 1], tree[x << 1 | 1]);
+	}
+	node query(int x , int l , int r, int lq , int rq) {
+		if (rq < l || lq > r) return node();
+		if ( lq <= l && r <= rq) return tree[x];
+
+		int m = (l + r) / 2;
+		node a = query(x << 1, l , m, lq, rq);
+		node b = query(x << 1 | 1 , m + 1 , r, lq, rq);
+		return merge(a, b);
+	}
+};
+
+
+int32_t main() {
+	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
+	ll n , q; cin >> n >> q;
+	vi ar(n);
+	FOR(i, 0, n - 1) cin >> ar[i];
+	SEGTREE* s  = new SEGTREE(n, ar);
 	while (q--) {
-		int qt; cin >> qt;
-		if (qt == 1) {
-			int i , v; cin >> i >> v;
-			tr.set(i, v);
+		ll a, b , c; cin >> a >> b >> c;
+		if ( a == 1) {
+			s->update( 1, 0, n - 1, b, c );
 		} else {
-			int l , r ; cin >> l >> r;
-			cout << tr.sum(l, r) << "\n";
+			auto x = s->query(1, 0, n - 1, b, c - 1);
+			cout << x.minimum  << " " << x.cnt << "\n";
 		}
 	}
+
 }
