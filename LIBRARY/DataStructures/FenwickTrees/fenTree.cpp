@@ -1,17 +1,29 @@
-#include "bits/stdc++.h"
+#include"bits/stdc++.h"
 using namespace std;
+using ll = long long;
+using vi = vector<ll>;
+
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
+//===================================================//
+
 
 int N ;
 vector<int> ar;
 vector<int> bt;
 
 //when updating : we move up in the series so there is the +.
-void update(int i , int v) {
+void update(int i , int v)
+{
 	for (; i <= N; i += (i & -i)) bt[i] += v;
 }
 
 // when sum : we sum till it gets down so there is the -.
-int qry (int l, int r) {
+int qry (int l, int r)
+{
 	auto sm = [&](int i) -> int {
 		int rt = 0;
 		for (; i > 0; i -= (i & -i)) rt += bt[i];
@@ -19,7 +31,8 @@ int qry (int l, int r) {
 	};
 	return sm(r) - sm(l - 1);
 }
-int32_t main() {
+int32_t main()
+{
 
 	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
 	cin >> N;

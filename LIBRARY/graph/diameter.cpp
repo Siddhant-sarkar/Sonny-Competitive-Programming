@@ -1,27 +1,17 @@
 #include "bits/stdc++.h"
 using namespace std;
-#define int long long
-using vi = vector<int>;
-using vv = vector<vi>;
-using pi = pair<int, int>;
-using vp = vector<pi>;
+using ll = long long;
+using vi = vector<ll>;
 
-#define nl 			"\n"
-#define f 			first
-#define s 			second
-#define pb 			push_back
-#define sz(x) 		(int)x.size()
-#define read(x) 	int x; cin >> x
-#define all(s) 		s.begin(), s.end()
-#define rep(i,a,b) 	for(int i=a;i<b;i++)
-#define rev(i,a,b) 	for(int i=a;i>b;i--)
-#define rdvr(x)    	for(auto &it :x) cin >> it
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
 
-constexpr int mod = 1e9 + 7;
-constexpr int inf = 1e18;
-constexpr int MXN = 3e5 + 10;
 
-int n , e ;
+int n , e;
+const int MXN = 2e5 + 10;
 vi adj[MXN], dis ;
 
 void dfs(int u, int p, int cnt)
@@ -37,8 +27,8 @@ int32_t main()
 	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
 	cin >> n;
 	dis.resize(n + 1);
-	rep(i, 0, n - 1) {
-		read(a); read(b);
+	FOR(i, 0, n - 1) {
+		int a, b; cin >> a >> b;
 		adj[a].push_back(b);
 		adj[b].push_back(a);
 	}

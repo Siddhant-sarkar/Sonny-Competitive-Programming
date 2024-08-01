@@ -1,27 +1,15 @@
-#include "bits/stdc++.h"
+#include"bits/stdc++.h"
 using namespace std;
-#define int long long
-using vi = vector<int>;
-using vv = vector<vi>;
-using pi = pair<int, int>;
-using vp = vector<pi>;
+using ll = long long;
+using vi = vector<ll>;
 
-#define nl 			"\n"
-#define F 			first
-#define S 			second
-#define pb 			push_back
-#define sz(x) 		(int)x.size()
-#define read(x) 	int x; cin >> x
-#define all(s) 		s.begin(), s.end()
-#define rep(i,a,b) 	for(int i=a;i<b;i++)
-#define rev(i,a,b) 	for(int i=a;i>b;i--)
-#define rdvr(x)    	for(auto &it :x) cin >> it
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
+//===================================================//
 
-#ifdef TSUKI
-#include "bits/bug.hpp"
-#else
-#define dbg(...)
-#endif
 
 constexpr int MOD = 1e9 + 7;
 constexpr int INF = 1e18;
@@ -33,7 +21,8 @@ vi a(MXN);
 // struct for segment Tree.
 struct node {
 	int cs, psm, ssm, mss;
-	node(int x = 0 ) {
+	node(int x = 0 )
+	{
 		cs = x;
 		// psm = ssm = mss = x;
 		psm = max(0LL, x);
@@ -44,7 +33,8 @@ struct node {
 } tr[4 * MXN];
 
 // function to merge a Tree
-node merge(node & a, node &b) {
+node merge(node & a, node &b)
+{
 	node rt;
 	rt.cs = a.cs + b.cs;
 	rt.psm = max(a.psm, a.cs + b.psm);
@@ -53,7 +43,8 @@ node merge(node & a, node &b) {
 	return rt;
 }
 // CRUD functions in segment Tree
-void build(int x, int l , int r ) {
+void build(int x, int l , int r )
+{
 	if ( l == r) {
 		tr[x] = node(a[l]);
 		return;
@@ -62,7 +53,8 @@ void build(int x, int l , int r ) {
 	build(x << 1, l, m); build(x << 1 | 1, m + 1, r);
 	tr[x] = merge(tr[x << 1], tr[x << 1 | 1]);
 }
-void update(int x, int l , int r, int p , int v) {
+void update(int x, int l , int r, int p , int v)
+{
 	if ( p < l || p > r) return;
 	if (  l == r) {
 		tr[x] = node(v);
@@ -74,7 +66,8 @@ void update(int x, int l , int r, int p , int v) {
 	else update(x << 1 | 1 , m + 1, r, p, v);
 	tr[x] = merge(tr[x << 1], tr[x << 1 | 1]);
 }
-node query(int x , int l , int r, int lq , int rq) {
+node query(int x , int l , int r, int lq , int rq)
+{
 	if (rq < l || lq > r) return node(0);
 	if ( lq <= l && r <= rq) return tr[x];
 
@@ -83,7 +76,8 @@ node query(int x , int l , int r, int lq , int rq) {
 	node b =   query(x << 1 | 1 , m + 1 , r, lq, rq);
 	return merge(a, b);
 }
-int32_t main() {
+int32_t main()
+{
 	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
 	cin >> n >> q;
 	rep(i, 0, n) cin >> a[i];
