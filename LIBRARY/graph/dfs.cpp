@@ -1,30 +1,17 @@
-#include "bits/stdc++.h"
+#include"bits/stdc++.h"
 using namespace std;
-#define int long long
-using vi = vector<int>;
-using vv = vector<vi>;
-using pi = pair<int, int>;
-using vp = vector<pi>;
+using ll = long long;
+using vi = vector<ll>;
 
-#define nl 			"\n"
-#define f 			first
-#define s 			second
-#define pb 			push_back
-#define sz(x) 		(int)x.size()
-#define read(x) 	int x; cin >> x
-#define all(s) 		s.begin(), s.end()
-#define rep(i,a,b) 	for(int i=a;i<b;i++)
-#define rev(i,a,b) 	for(int i=a;i>b;i--)
-#define rdvr(x)    	for(auto &it :x) cin >> it
-
-#ifdef tsuki
-#include "bits/bug.hpp"
-#else
-#define dbg(...)
-#endif
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
+//===================================================//
 
 constexpr int mod = 1e9 + 7;
-constexpr int inf = 1e18;
+constexpr ll inf = 1e18;
 constexpr int MXN = 3e5 + 10;
 
 int n , e ;

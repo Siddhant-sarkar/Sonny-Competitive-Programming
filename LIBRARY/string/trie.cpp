@@ -1,5 +1,15 @@
 #include"bits/stdc++.h"
 using namespace std;
+using ll = long long;
+using vi = vector<ll>;
+
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
+//===================================================//
+
 
 struct node {
 	node* child[26];
@@ -11,7 +21,8 @@ struct node {
 struct Trie {
 	node* t;
 	Trie() { t = new node(); }
-	void insert(string s) {
+	void insert(string s)
+	{
 		node* curr = t;
 		for (auto c : s) {
 			curr->prefix++;
@@ -22,7 +33,8 @@ struct Trie {
 		curr->wend.push_back(s);
 		curr->leaf = 1;
 	}
-	void remove(string &s) {
+	void remove(string &s)
+	{
 		node * curr = t;
 		for (auto c : s) {
 			curr ->prefix--;
@@ -31,7 +43,8 @@ struct Trie {
 		}
 		curr->wend.pop_back();
 	}
-	bool search(string &s) {
+	bool search(string &s)
+	{
 		node* curr = t;
 		for (auto c : s) {
 			if (curr->child[c - 'a'] == NULL) return 0;
@@ -41,7 +54,8 @@ struct Trie {
 	}
 
 };
-int main() {
+int main()
+{
 	Trie* t = new Trie();
 	t->insert("siddhant");
 	t->insert("sid");

@@ -9,6 +9,7 @@ using vi = vector<ll>;
 #define TRA(x,a) for(auto &x : a)
 #define FOR(i,a,b) for(int i = a;i<=b;i++)
 //===================================================//
+
 const int N = 1e5 + 5;
 int n, q, a[N];
 multiset<int> seg[4 * N + 5];

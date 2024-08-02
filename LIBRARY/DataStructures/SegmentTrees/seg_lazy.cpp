@@ -9,6 +9,7 @@ using vi = vector<ll>;
 #define TRA(x,a) for(auto &x : a)
 #define FOR(i,a,b) for(int i = a;i<=b;i++)
 //===================================================//
+
 const int MXN = 2e5 + 10;
 struct node {
 	int n, lzy;

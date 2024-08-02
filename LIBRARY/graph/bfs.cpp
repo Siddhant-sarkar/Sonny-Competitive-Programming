@@ -1,6 +1,15 @@
 #include"bits/stdc++.h"
 using namespace std;
-#define FOR(i,a,b) for(int i=a;i<=b;i++)
+using ll = long long;
+using vi = vector<ll>;
+
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
+//===================================================//
+
 
 int main()
 {

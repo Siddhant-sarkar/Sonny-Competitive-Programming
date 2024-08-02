@@ -1,14 +1,15 @@
-#include<bits/stdc++.h>
+#include"bits/stdc++.h"
 using namespace std;
+using ll = long long;
+using vi = vector<ll>;
 
-using ll 			= 		long long;
-#define FOR(i,a,b)			for(ll i=a;i<=b;i++)
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
+//===================================================//
 
-#ifdef TSUKI
-#include "bits/bug.hpp"
-#else
-#define dbg(...)
-#endif
 
 constexpr ll MOD =  1e9 + 7;
 constexpr ll INF = 1e18;
@@ -16,7 +17,8 @@ constexpr ll INF = 1e18;
 struct BINO {
 	ll N;
 	vector<ll> fact, inv;
-	BINO(ll n) {
+	BINO(ll n)
+	{
 		N = n;
 		fact = vector<ll>(N + 10);
 		inv = vector<ll>(N + 10);
@@ -24,7 +26,8 @@ struct BINO {
 		FOR(i, 2, N) fact[i] = (fact[i - 1] * i) % MOD;
 		FOR(i, 2, N) inv[i] = bin_pow(fact[i], MOD - 2);
 	}
-	ll bin_pow(ll b , ll e) {
+	ll bin_pow(ll b , ll e)
+	{
 		ll res = 1;
 		while ( e) {
 			if ( e & 1) res = (res * b) % MOD;
@@ -39,7 +42,8 @@ struct BINO {
 };
 
 
-int32_t main() {
+int32_t main()
+{
 	cout.tie(0); cin.tie(0); ios::sync_with_stdio(false);
 
 }

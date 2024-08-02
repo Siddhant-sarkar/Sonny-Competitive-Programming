@@ -1,20 +1,25 @@
-#include "bits/stdc++.h"
+#include"bits/stdc++.h"
 using namespace std;
+using ll = long long;
+using vi = vector<ll>;
 
-#define int long long
-using vi = vector<int>;
-using pi = pair<int, int>;
-using vp = vector<pi>;
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
+//===================================================//
 
 const int MXN = 2e5 + 10;
-const int INF = 1e18 + 10;
+const ll INF = 1e18 + 10;
 const int MOD = 1e9 + 7;
 
 const int LOG = log2(MXN) + 5;
 int n, dp[LOG][MXN], dep[MXN];
 vector<int> adj[MXN];
 
-void dfs(int u = 1, int p = 0, int d = 0) {
+void dfs(int u = 1, int p = 0, int d = 0)
+{
 	dep[u] = d;
 	dp[0][u] = p;
 	for (auto v : adj[u]) {
@@ -22,13 +27,15 @@ void dfs(int u = 1, int p = 0, int d = 0) {
 		dfs(v, u, d + 1);
 	}
 }
-int lift(int a, int k) {
+int lift(int a, int k)
+{
 	for (int l = 0; l < LOG; l++) {
 		if (k & (1 << l)) a = dp[l][a];
 	}
 	return a;
 }
-int lca (int n1 , int n2) {
+int lca (int n1 , int n2)
+{
 	n1 = lift(n1, dep[n1] - min(dep[n1], dep[n2]));
 	n2 = lift(n2, dep[n2] - min(dep[n1], dep[n2]));
 	if (n1 == n2) return n1;
@@ -41,10 +48,12 @@ int lca (int n1 , int n2) {
 	}
 	return dp[0][n1];
 }
-int dis(int n1 , int n2 ) {
+int dis(int n1 , int n2 )
+{
 	return dep[n1] + dep[n2] - 2 * dep[lca(n1, n2)]; // -> pretty much self explainatory.
 }
-signed main() {
+signed main()
+{
 	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
 	cin >> n;
 	for (int i = 1; i <= n - 1; i++) {

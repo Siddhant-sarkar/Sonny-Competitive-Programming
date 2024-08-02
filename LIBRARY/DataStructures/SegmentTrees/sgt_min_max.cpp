@@ -10,9 +10,8 @@ using vi = vector<ll>;
 #define FOR(i,a,b) for(int i = a;i<=b;i++)
 //===================================================//
 
-
 constexpr int MOD = 1e9 + 7;
-constexpr int INF = 1e18;
+constexpr ll INF = 1e18;
 constexpr int MXN = 3e5 + 10;
 
 
@@ -20,8 +19,8 @@ int n , q;
 vi a(MXN);
 // struct for segment Tree.
 struct node {
-	int cs, psm, ssm, mss;
-	node(int x = 0 )
+	ll cs, psm, ssm, mss;
+	node(ll x = 0 )
 	{
 		cs = x;
 		// psm = ssm = mss = x;
@@ -80,7 +79,7 @@ int32_t main()
 {
 	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
 	cin >> n >> q;
-	rep(i, 0, n) cin >> a[i];
+	FOR(i, 0, n) cin >> a[i];
 
 	build(1, 0, n - 1); // build the Tree
 	update(1, 0, n - 1, 2, 8); // update

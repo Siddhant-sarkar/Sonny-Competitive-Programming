@@ -1,11 +1,17 @@
-#include "bits/stdc++.h"
+#include"bits/stdc++.h"
 using namespace std;
+using ll = long long;
+using vi = vector<ll>;
 
-#define int long long
-#define nl cout <<"\n"
+#define nl "\n"
+#define pb push_back
+#define all(x) begin(x),end(x)
+#define TRA(x,a) for(auto &x : a)
+#define FOR(i,a,b) for(int i = a;i<=b;i++)
+//===================================================//
 
 const int MXN = 2e5 + 10;
-const int INF = 1e18 + 10;
+const ll INF = 1e18 + 10;
 const int MOD = 1e9 + 7;
 
 
@@ -14,7 +20,8 @@ int n, dp[LOG][MXN];
 vector<int> adj[MXN];
 
 // using dfs to set dp[0][i] initial parents
-void dfs(int u = 1 , int p = 0) {
+void dfs(int u = 1 , int p = 0)
+{
 	dp[0][u] = p;
 	for (int v : adj[u]) {
 		if (v == p) continue;
@@ -22,7 +29,8 @@ void dfs(int u = 1 , int p = 0) {
 	}
 }
 
-signed main() {
+signed main()
+{
 	cin.tie(0); cout.tie(0) -> sync_with_stdio(0);
 	cin >> n;
 	for (int i = 1; i <= n - 1; i++) {
