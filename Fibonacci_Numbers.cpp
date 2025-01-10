@@ -54,7 +54,8 @@ template <typename T, typename... Args> void print(T &&t, Args &&...args) {
   print(forward<Args>(args)...);
 }
 
-void solve(ll tc) {}
+void solve(ll tc) {
+}
 int main() {
   _lalalalala_ ll t = 1;
   cin >> t;
