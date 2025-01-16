@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 using namespace std;
 
 // defines
@@ -21,10 +21,13 @@ using pii = std::pair<ll, ll>;
   cin.tie(0);                                                                  \
   ios::sync_with_stdio(false);
 
-// consts
-constexpr ll INF = 2e18;
-constexpr ll MOD = 1e9 + 7;
-constexpr long double EPS = 1e-16;
+// Debug - template import
+#ifndef ONLINE_JUDGE
+#include "bits/bug.hpp"
+#else
+#define debug(...)
+#define debugArr(...)
+#endif
 
 // I/O overloads
 template <typename T1, typename T2>
@@ -47,14 +50,25 @@ ostream &operator<<(ostream &os, const T &c) {
     os << it << " ";
   return os;
 }
-
 template <typename T> void print(T &&t) { cout << t << "\n"; }
 template <typename T, typename... Args> void print(T &&t, Args &&...args) {
   cout << t << " ";
   print(forward<Args>(args)...);
 }
 
-void solve(ll tc) {}
+// consts
+constexpr ll INF = 2e18;
+constexpr ll MOD = 1e9 + 7;
+constexpr long double EPS = 1e-16;
+
+void solve(ll tc) {
+  int N;
+  cin >> N;
+  vi A(N);
+  FOR(i, 0, N - 1) cin >> A[i];
+  debug(A);
+}
+
 int main() {
   _lalalalala_ ll t = 1;
   cin >> t;

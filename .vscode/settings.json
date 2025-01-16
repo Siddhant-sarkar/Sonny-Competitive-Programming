@@ -1,6 +1,7 @@
 {
     "cph.general.saveLocation": "",
     "files.associations": {
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "iosfwd": "cpp"
     }
 }
