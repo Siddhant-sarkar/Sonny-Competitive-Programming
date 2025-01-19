@@ -1,14 +1,17 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
-using vi = vector<ll>;
 
+// defines
+using ll = long long;
+using vi = std::vector<ll>;
+// macros
 #define nl "\n"
-#define pb push_back
-#define all(x) begin(x), end(x)
-#define TRA(x, a) for (auto &x : a)
-#define FOR(i, a, b) for (int i = a; i <= b; i++)
-//===================================================//
+#define sz(a) (ll) a.size();
+#define all(a) begin(a), end(a)
+#define FOR(i, a, b) for (int i = a; i <= (int)b; i++)
+#define ROF(i, a, b) for (int i = a; i >= (int)b; i--)
+
+// " Is man one of God’s blunders or is God one of man’s blunder?? "
 
 const int N = 1e5 + 5;
 int n, q, a[N];
@@ -22,8 +25,7 @@ void build(int x, int lt, int rt) {
   int mid = (lt + rt) / 2;
   build(x * 2, lt, mid);
   build(x * 2 + 1, mid + 1, rt);
-  for (int i = lt; i <= rt; i++)
-    seg[x].insert(a[i]);
+  for (int i = lt; i <= rt; i++) seg[x].insert(a[i]);
 }
 void update(int x, int lt, int rt, int p, int v) {
   if (lt == rt) {
@@ -41,12 +43,10 @@ void update(int x, int lt, int rt, int p, int v) {
   return;
 }
 int query(int node, int l, int r, int lx, int rx, int x) {
-  if (l > rx || r < lx)
-    return INT_MAX;
+  if (l > rx || r < lx) return INT_MAX;
   if (l >= lx && r <= rx) {
     auto it = seg[node].lower_bound(x);
-    if (it == seg[node].end())
-      return INT_MAX;
+    if (it == seg[node].end()) return INT_MAX;
     return *it;
   }
   int mid = (l + r) / 2;
