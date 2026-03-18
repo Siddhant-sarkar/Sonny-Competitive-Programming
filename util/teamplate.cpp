@@ -1,4 +1,4 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 // defines
@@ -61,8 +61,6 @@ constexpr ll INF = 2e18;
 constexpr ll MOD = 1e9 + 7;
 constexpr long double EPS = 1e-16;
 
-//================================== Veni,vidi,vici,
-// ===来た、見た、勝った===============================>
 void solve(ll tc) {
   int N;
   cin >> N;
