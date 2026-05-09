@@ -69,6 +69,7 @@ void solve(ll tc) {
   // FOR(i, 0, N - 1) cin >> A[i];
   debug(A); debug(B);
 
+  cout << "This world is good" << endl;
 }
 
 int main() {
