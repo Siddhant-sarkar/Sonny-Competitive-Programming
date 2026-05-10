@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "../../bits/stdc++.h"
 using namespace std;
 
 // defines
@@ -20,7 +20,8 @@ vi adj[MXN], dis;
 void dfs(int u, int p, int cnt) {
   dis[u] = cnt;
   for (auto v : adj[u]) {
-    if (v == p) continue;
+    if (v == p)
+      continue;
     dfs(v, u, cnt + 1);
   }
 }
