@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 using namespace std;
 
 // defines
@@ -18,9 +18,12 @@ int dp[12][12][2];
 
 int call(int pos, int cnt, int f) {
   // terminating conditions
-  if (cnt > k) return 0;
-  if (pos == num.size()) return cnt == k;
-  if (dp[pos][cnt][f] != -1) return dp[pos][cnt][f];
+  if (cnt > k)
+    return 0;
+  if (pos == (long long)num.size())
+    return cnt == k;
+  if (dp[pos][cnt][f] != -1)
+    return dp[pos][cnt][f];
 
   // defining limits
   int LMT, res = 0;
@@ -32,9 +35,12 @@ int call(int pos, int cnt, int f) {
   for (int dgt = 0; dgt <= LMT; dgt++) {
     int ncnt = cnt;
     int nf = f;
-    if (f == 0 && dgt < LMT) nf = 1;  // checking if number getting smaller
-    if (dgt == d) ncnt++;             // checking if count of D increasing
-    if (ncnt <= k) res += call(pos + 1, ncnt, nf);  // only call if count <=k
+    if (f == 0 && dgt < LMT)
+      nf = 1; // checking if number getting smaller
+    if (dgt == d)
+      ncnt++; // checking if count of D increasing
+    if (ncnt <= k)
+      res += call(pos + 1, ncnt, nf); // only call if count <=k
   }
   return dp[cnt][pos][f] = res;
 }

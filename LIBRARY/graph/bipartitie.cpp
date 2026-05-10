@@ -26,8 +26,9 @@ int main() {
     graph[v].push_back(u);
   }
   vector<int> vis(N + 1, -1);
-  auto dfs = [&](auto&& dfs, int u, int p, int c) -> bool {
-    if (vis[u] != -1) return vis[u] == c ? 1 : 0;
+  auto dfs = [&](auto &&dfs, int u, int p, int c) -> bool {
+    if (vis[u] != -1)
+      return vis[u] == c ? 1 : 0;
     vis[u] = c;
     bool ans = 1;
     for (auto v : graph[u]) {

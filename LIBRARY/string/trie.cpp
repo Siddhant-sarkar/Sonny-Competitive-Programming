@@ -14,7 +14,7 @@ using vi = std::vector<ll>;
 // " Is man one of God’s blunders or is God one of man’s blunder?? "
 
 struct node {
-  node* child[26];
+  node *child[26];
   int prefix = 0, leaf = 0;
   vector<string> wend;
   node() {
@@ -26,10 +26,10 @@ struct node {
 };
 
 struct Trie {
-  node* t;
+  node *t;
   Trie() { t = new node(); }
   void insert(string s) {
-    node* curr = t;
+    node *curr = t;
     for (auto c : s) {
       curr->prefix++;
       int x = c - 'a';
@@ -41,26 +41,28 @@ struct Trie {
     curr->wend.push_back(s);
     curr->leaf = 1;
   }
-  void remove(string& s) {
-    node* curr = t;
+  void remove(string &s) {
+    node *curr = t;
     for (auto c : s) {
       curr->prefix--;
-      if (curr->child[c - 'a'] == NULL) return;
+      if (curr->child[c - 'a'] == NULL)
+        return;
       curr = curr->child[c - 'a'];
     }
     curr->wend.pop_back();
   }
-  bool search(string& s) {
-    node* curr = t;
+  bool search(string &s) {
+    node *curr = t;
     for (auto c : s) {
-      if (curr->child[c - 'a'] == NULL) return 0;
+      if (curr->child[c - 'a'] == NULL)
+        return 0;
       curr = curr->child[c - 'a'];
     }
     return 1;
   }
 };
 int main() {
-  Trie* t = new Trie();
+  Trie *t = new Trie();
   t->insert("siddhant");
   t->insert("sid");
   string s = "sidd";

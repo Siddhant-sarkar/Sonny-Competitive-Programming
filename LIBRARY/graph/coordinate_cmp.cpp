@@ -22,7 +22,8 @@ int32_t main() {
   cin >> n;
 
   vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
+  for (int i = 0; i < n; i++)
+    cin >> a[i];
   vector<int> b = a;
   sort(b.begin(), b.end());
   for (int i = 0; i < n; i++) {

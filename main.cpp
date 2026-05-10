@@ -67,7 +67,8 @@ void solve(ll tc) {
   vi A(N), B(N);
   cin >> A >> B;
   // FOR(i, 0, N - 1) cin >> A[i];
-  debug(A); debug(B);
+  debug(A);
+  debug(B);
 
   cout << "This world is good" << endl;
 }
