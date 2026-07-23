@@ -1,4 +1,4 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 // defines
@@ -64,14 +64,9 @@ constexpr long double EPS = 1e-16;
 void solve(ll tc) {
   int N;
   cin >> N;
-  vi A(N), B(N);
-  cin >> A >> B;
-  // FOR(i, 0, N - 1) cin >> A[i];
+  vi A(N);
+  FOR(i, 0, N - 1) cin >> A[i];
   debug(A);
-  debug(B);
-
-  cout << "This world is good" << endl;
-  cout << "main.cpp" << endl;
 }
 
 int main() {
