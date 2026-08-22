@@ -62,11 +62,10 @@ constexpr ll MOD = 1e9 + 7;
 constexpr long double EPS = 1e-16;
 
 void solve(ll tc) {
-  int N;
-  cin >> N;
-  vi A(N);
-  FOR(i, 0, N - 1) cin >> A[i];
-  debug(A);
+  vi a(3);
+	cin >> a[0] >> a[1] >> a[2];
+	sort(a.begin(), a.end());
+	cout << min(a[2] - a[0], a[1]) << "\n";
 }
 
 int main() {

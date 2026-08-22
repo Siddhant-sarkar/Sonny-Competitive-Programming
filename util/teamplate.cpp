@@ -62,11 +62,7 @@ constexpr ll MOD = 1e9 + 7;
 constexpr long double EPS = 1e-16;
 
 void solve(ll tc) {
-  int N;
-  cin >> N;
-  vi A(N);
-  FOR(i, 0, N - 1) cin >> A[i];
-  debug(A);
+
 }
 
 int main() {
