@@ -36,5 +36,8 @@
 IO
 .cph
 .vscode
+.problem
+.temp
+.solve
 
 node_modules
