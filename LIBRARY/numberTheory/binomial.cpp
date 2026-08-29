@@ -27,6 +27,7 @@ struct BINO {
     FOR(i, 2, N) fact[i] = (fact[i - 1] * i) % MOD;
     FOR(i, 2, N) inv[i] = bin_pow(fact[i], MOD - 2);
   }
+  // modular exponentiation, used to get modular inverses via fermat's little theorem
   ll bin_pow(ll b, ll e) {
     ll res = 1;
     while (e) {
@@ -36,8 +37,11 @@ struct BINO {
     }
     return res % MOD;
   }
+  // k factorial mod MOD
   ll fac(ll k) { return fact[k] % MOD; }
+  // permutations of r items from n mod MOD
   ll nPR(ll n, ll r) { return (fact[n] * inv[n - r]) % MOD; }
+  // combinations of r items from n mod MOD
   ll nCR(ll n, ll r) { return (((fact[n] * inv[n - r]) % MOD) * inv[r]) % MOD; }
 };
 

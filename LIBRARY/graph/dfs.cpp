@@ -20,6 +20,7 @@ constexpr int MXN = 3e5 + 10;
 int n, e;
 vi adj[MXN], dis;
 
+// standard DFS, records distance/depth of each node from the root
 void dfs(int u, int p, int cnt) {
   dis[u] = cnt;
   for (auto v : adj[u]) {

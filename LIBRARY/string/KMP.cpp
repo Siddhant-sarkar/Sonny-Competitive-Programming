@@ -13,6 +13,7 @@ using vi = std::vector<ll>;
 
 // " Is man one of God’s blunders or is God one of man’s blunder?? "
 
+// builds the KMP failure/prefix function (lps) for string s
 int main() {
   string s;
   cin >> s;

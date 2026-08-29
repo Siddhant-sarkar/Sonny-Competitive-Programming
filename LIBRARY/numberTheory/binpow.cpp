@@ -16,6 +16,7 @@ using vi = std::vector<ll>;
 constexpr ll MOD = 998244353;
 constexpr ll INF = 1e18;
 
+// computes b^e mod MOD via binary exponentiation
 ll bin_pow(ll b, ll e) {
   ll res = 1;
   while (e) {

@@ -20,6 +20,7 @@ constexpr int MXN = 3e5 + 10;
 int n, e;
 vi adj[MXN], e1, e2;
 
+// euler tour: e1 marks first+every re-entry (for LCA), e2 marks first+last visit
 void dfs(int u, int p) {
   e1.push_back(u);
   e2.push_back(u);

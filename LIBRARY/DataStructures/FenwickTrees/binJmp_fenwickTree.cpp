@@ -16,6 +16,7 @@ using vi = std::vector<ll>;
 int N;
 vector<int> ar, bit;
 
+// range sum query [l, r], 1-indexed
 int qry(int l, int r) {
   auto sum = [&](int i) -> int {
     int rt = 0;
@@ -26,11 +27,13 @@ int qry(int l, int r) {
   };
   return sum(r) - sum(l - 1);
 }
+// point update: adds v at index i
 void update(int i, int v) {
   for (; i <= N; i += (i & -i)) {
     bit[i] += v;
   }
 }
+// binary jump to find smallest index whose prefix sum >= x
 int lw_bound(int x) {
   int cp = 0, csum = 0;
   for (int i = log2(x); i >= 0; i--) {

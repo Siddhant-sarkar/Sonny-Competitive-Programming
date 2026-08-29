@@ -25,6 +25,7 @@ struct node {
 vi ar(MXN);
 node tr[4 * MXN];
 
+// pushes pending lazy update down to children
 void push(int x, int l, int r) {
   if (tr[x].lzy) {
     tr[x].n += tr[x].lzy * (r - l + 1);
@@ -35,7 +36,9 @@ void push(int x, int l, int r) {
     tr[x].lzy = 0LL;
   }
 }
+// combines two child nodes into their parent
 node merge(node& a, node& b) { return node(a.n + b.n); }
+// builds the tree over ar[l..r]
 void build(int x, int l, int r) {
   if (l == r) {
     tr[x] = node(ar[l]);
@@ -46,6 +49,7 @@ void build(int x, int l, int r) {
   build(x << 1 | 1, m + 1, r);
   tr[x] = merge(tr[x << 1], tr[x << 1 | 1]);
 }
+// range update: adds v lazily over [lq, rq]
 void update(int x, int l, int r, int lq, int rq, int v) {
   push(x, l, r);
   if (rq < l || lq > r) return;
@@ -59,6 +63,7 @@ void update(int x, int l, int r, int lq, int rq, int v) {
   update(x << 1 | 1, m + 1, r, lq, rq, v);
   tr[x] = merge(tr[x << 1], tr[x << 1 | 1]);
 }
+// range query over [lq, rq]
 node qry(int x, int l, int r, int lq, int rq) {
   push(x, l, r);
   if (rq < l || lq > r) return node();

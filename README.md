@@ -81,54 +81,55 @@ Most files are snippet templates with small local `main()` demos. In contest use
 
 ### DataStructures/FenwickTrees
 
-- `LIBRARY/DataStructures/FenwickTrees/fenTree.cpp`: Basic Fenwick Tree (BIT), point update + range sum query (`qry(l, r)`).
-- `LIBRARY/DataStructures/FenwickTrees/binJmp_fenwickTree.cpp`: Fenwick Tree + binary lifting style lower bound (`lw_bound(x)`) for prefix sums.
+- `LIBRARY/DataStructures/FenwickTrees/fenTree.cpp`: Basic Fenwick Tree (BIT), point update + range sum query (`qry(l, r)`). ✅
+- `LIBRARY/DataStructures/FenwickTrees/binJmp_fenwickTree.cpp`: Fenwick Tree + binary lifting style lower bound (`lw_bound(x)`) for prefix sums. ✅
 
 ### DataStructures/SegmentTrees
 
-- `LIBRARY/DataStructures/SegmentTrees/seg_tree.cpp`: Generic segment tree skeleton with `node`, `merge`, build/update/query (intended to customize).
-- `LIBRARY/DataStructures/SegmentTrees/seg_lazy.cpp`: Lazy segment tree template for range updates + range sum style query.
-- `LIBRARY/DataStructures/SegmentTrees/merge_sort_tree.cpp`: Merge-sort tree style structure using `multiset` at nodes; supports query for smallest value `>= x` in a range.
-- `LIBRARY/DataStructures/SegmentTrees/sgt_min_max.cpp`: Segment tree for maximum subarray sum (`cs`, `psm`, `ssm`, `mss`) with point update.
+- `LIBRARY/DataStructures/SegmentTrees/seg_tree.cpp`: Generic segment tree skeleton with `node`, `merge`, build/update/query (intended to customize). ✅
+- `LIBRARY/DataStructures/SegmentTrees/seg_lazy.cpp`: Lazy segment tree template for range updates + range sum style query. ✅
+- `LIBRARY/DataStructures/SegmentTrees/merge_sort_tree.cpp`: Merge-sort tree style structure using `multiset` at nodes; supports query for smallest value `>= x` in a range. ✅
+- `LIBRARY/DataStructures/SegmentTrees/sgt_min_max.cpp`: Segment tree for maximum subarray sum (`cs`, `psm`, `ssm`, `mss`) with point update. ✅
 - `LIBRARY/DataStructures/SegmentTrees/seg_lazy`: Compiled Mach-O executable artifact (not source template).
 
 ### DP
 
-- `LIBRARY/DP/digitdp.cpp`: Digit DP to count numbers in range with exactly `k` occurrences of digit `d`.
+- `LIBRARY/DP/digitdp.cpp`: Digit DP to count numbers in range with exactly `k` occurrences of digit `d`. ✅
 
 ### graph
 
-- `LIBRARY/graph/bfs.cpp`: BFS traversal from node `1`, with parent tracking.
-- `LIBRARY/graph/dfs.cpp`: DFS depth/distance fill from a root in a tree/graph.
-- `LIBRARY/graph/dsu.cpp`: Disjoint Set Union (Union-Find) with path compression + union by size.
-- `LIBRARY/graph/bipartitie.cpp`: Bipartite check using DFS and 2-coloring.
-- `LIBRARY/graph/diameter.cpp`: Tree diameter using two DFS passes.
-- `LIBRARY/graph/topoSort.cpp`: DFS postorder topological sort pattern.
-- `LIBRARY/graph/eularTour.cpp`: Euler tour generation (`e1` and `e2` forms).
-- `LIBRARY/graph/coordinate_cmp.cpp`: Coordinate compression via sorted copy + map.
+- `LIBRARY/graph/bfs.cpp`: BFS traversal from node `1`, with parent tracking. ✅
+- `LIBRARY/graph/dfs.cpp`: DFS depth/distance fill from a root in a tree/graph. ✅
+- `LIBRARY/graph/dsu.cpp`: Disjoint Set Union (Union-Find) with path compression + union by size. ✅
+- `LIBRARY/graph/bipartitie.cpp`: Bipartite check using DFS and 2-coloring. ✅
+- `LIBRARY/graph/diameter.cpp`: Tree diameter using two DFS passes. ✅
+- `LIBRARY/graph/topoSort.cpp`: DFS postorder topological sort pattern. ✅
+- `LIBRARY/graph/eularTour.cpp`: Euler tour generation (`e1` and `e2` forms). ✅
+- `LIBRARY/graph/coordinate_cmp.cpp`: Coordinate compression via sorted copy + map. ✅
 
 ### numberTheory
 
-- `LIBRARY/numberTheory/binpow.cpp`: Binary exponentiation (`b^e mod MOD`).
-- `LIBRARY/numberTheory/binomial.cpp`: Factorial/inverse precompute for `nCr`, `nPr` under modulo.
-- `LIBRARY/numberTheory/harmonic.cpp`: Harmonic-style divisor counting (`count divisors for each number up to N`).
-- `LIBRARY/numberTheory/seieve.cpp`: Prime sieve scaffold with prime list generation.
+- `LIBRARY/numberTheory/binpow.cpp`: Binary exponentiation (`b^e mod MOD`). ✅
+- `LIBRARY/numberTheory/binomial.cpp`: Factorial/inverse precompute for `nCr`, `nPr` under modulo. ✅
+- `LIBRARY/numberTheory/harmonic.cpp`: Harmonic-style divisor counting (`count divisors for each number up to N`). ✅
+- `LIBRARY/numberTheory/seieve.cpp`: Prime sieve scaffold with prime list generation. ✅
 
 ### string
 
-- `LIBRARY/string/KMP.cpp`: KMP prefix/LPS array construction.
-- `LIBRARY/string/trie.cpp`: Lowercase trie with insert/search/remove support.
+- `LIBRARY/string/KMP.cpp`: KMP prefix/LPS array construction. ✅
+- `LIBRARY/string/trie.cpp`: Lowercase trie with insert/search/remove support. ✅
 
 ### tree
 
-- `LIBRARY/tree/bin_jmp.cpp`: Binary lifting / kth ancestor queries.
-- `LIBRARY/tree/lca.cpp`: LCA + distance query using binary lifting.
+- `LIBRARY/tree/bin_jmp.cpp`: Binary lifting / kth ancestor queries. ✅
+- `LIBRARY/tree/lca.cpp`: LCA + distance query using binary lifting. ✅
 
 ### misc
 
-- `LIBRARY/misc/matrix.cpp`: Matrix exponentiation skeleton (needs return/completion before direct use).
-- `LIBRARY/misc/pascal.cpp`: Pascal triangle precompute for combinations table.
-- `LIBRARY/misc/sparse_table.cpp`: Sparse table for static RMQ (minimum query).
+- `LIBRARY/misc/matrix.cpp`: Matrix exponentiation skeleton (needs return/completion before direct use). ⬜ not done
+- `LIBRARY/misc/pascal.cpp`: Pascal triangle precompute for combinations table. ✅
+- `LIBRARY/misc/sparse_table.cpp`: Sparse table for static RMQ (minimum query). ✅
+- `LIBRARY/misc/prefix_sum_2d.cpp`: 2D prefix sum build + O(1) rectangle sum query (`qry(x1, y1, x2, y2)`). ✅
 
 ## `main.cpp` Template Explanation
 

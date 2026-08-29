@@ -17,6 +17,7 @@ int n, e;
 const int MXN = 2e5 + 10;
 vi adj[MXN], dis;
 
+// standard DFS, records distance/depth of each node from the root
 void dfs(int u, int p, int cnt) {
   dis[u] = cnt;
   for (auto v : adj[u]) {
@@ -37,8 +38,10 @@ int32_t main() {
     adj[b].push_back(a);
   }
   dfs(1, 0, 0);
+  // farthest node from an arbitrary root is one endpoint of the diameter
   int mp = max_element(all(dis)) - dis.begin();
   dis.resize(n + 1, -1);
+  // farthest node from that endpoint gives the diameter length
   dfs(mp, 0, 0);
   cout << *max_element(all(dis)) << nl;
 }

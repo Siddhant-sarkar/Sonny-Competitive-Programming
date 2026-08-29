@@ -18,6 +18,7 @@ constexpr ll INF = 1e18;
 
 // pascal triangle
 vector<vector<ll>> nCR;
+// precomputes nCR[n][r] for n, r up to k via pascal's rule
 void pre() {
   ll k = 1e3;
   nCR = vector<vector<ll>>(k + 10, vector<ll>(k + 10));

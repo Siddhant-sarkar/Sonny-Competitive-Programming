@@ -20,6 +20,7 @@ int n, q;
 int ar[MAX_N];
 int spt[LOG][MAX_N];
 
+// range min query [l, r] in O(1)
 int qry(int l, int r) {
   int lr = (r - l + 1);
   int p = 0;

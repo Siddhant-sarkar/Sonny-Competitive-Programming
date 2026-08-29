@@ -26,6 +26,7 @@ int main() {
     graph[v].push_back(u);
   }
   vector<int> vis(N + 1, -1);
+  // 2-colors the graph, returns false if a conflict (odd cycle) is found
   auto dfs = [&](auto &&dfs, int u, int p, int c) -> bool {
     if (vis[u] != -1)
       return vis[u] == c ? 1 : 0;

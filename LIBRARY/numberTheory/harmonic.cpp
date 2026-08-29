@@ -17,6 +17,7 @@ constexpr ll MOD = 1e9 + 7;
 constexpr ll INF = 1e18;
 constexpr ll N = 1e6 + 9;
 
+// counts divisors of every number up to N in O(N log N)
 void harmonic() {
   vector<ll> a(N);
   for (int i = 1; i < N; i++) {

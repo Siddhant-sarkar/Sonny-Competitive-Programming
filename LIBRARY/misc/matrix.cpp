@@ -16,6 +16,7 @@ using vi = std::vector<ll>;
 const ll MOD = 1e9 + 7;
 const ll INF = 1e18;
 
+// computes A^b via binary exponentiation on matrices
 vector<vector<ll>> MatrixExpo(vector<vector<ll>> A, ll b) {
   ll N = A.size();
   vector<vector<ll>> ans(N, vector<ll>(N));

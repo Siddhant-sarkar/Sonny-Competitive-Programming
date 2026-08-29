@@ -21,6 +21,7 @@ const int LOG = 30 + 5;
 int n, dp[LOG][MXN], dep[MXN];
 vector<int> adj[MXN];
 
+// DFS to set initial parent (dp[0][u]) and depth of each node
 void dfs(int u = 1, int p = 0, int d = 0) {
   dep[u] = d;
   dp[0][u] = p;
@@ -29,12 +30,14 @@ void dfs(int u = 1, int p = 0, int d = 0) {
     dfs(v, u, d + 1);
   }
 }
+// binary lifts node a up by k levels
 int lift(int a, int k) {
   for (int l = 0; l < LOG; l++) {
     if (k & (1 << l)) a = dp[l][a];
   }
   return a;
 }
+// lowest common ancestor of n1 and n2 via binary lifting
 int lca(int n1, int n2) {
   n1 = lift(n1, dep[n1] - min(dep[n1], dep[n2]));
   n2 = lift(n2, dep[n2] - min(dep[n1], dep[n2]));
@@ -48,6 +51,7 @@ int lca(int n1, int n2) {
   }
   return dp[0][n1];
 }
+// distance between n1 and n2 via their LCA
 int dis(int n1, int n2) {
   return dep[n1] + dep[n2] -
          2 * dep[lca(n1, n2)];  // -> pretty much self explainatory.

@@ -28,6 +28,7 @@ struct node {
 struct Trie {
   node *t;
   Trie() { t = new node(); }
+  // inserts string s into the trie
   void insert(string s) {
     node *curr = t;
     for (auto c : s) {
@@ -41,6 +42,7 @@ struct Trie {
     curr->wend.push_back(s);
     curr->leaf = 1;
   }
+  // removes string s from the trie
   void remove(string &s) {
     node *curr = t;
     for (auto c : s) {
@@ -51,6 +53,7 @@ struct Trie {
     }
     curr->wend.pop_back();
   }
+  // checks whether s exists as a prefix in the trie
   bool search(string &s) {
     node *curr = t;
     for (auto c : s) {

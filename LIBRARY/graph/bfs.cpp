@@ -13,6 +13,7 @@ using vi = std::vector<ll>;
 
 // " Is man one of God’s blunders or is God one of man’s blunder?? "
 
+// standard BFS from node 1, records parent of each visited node
 int main() {
   int n, e;
   cin >> n >> e;

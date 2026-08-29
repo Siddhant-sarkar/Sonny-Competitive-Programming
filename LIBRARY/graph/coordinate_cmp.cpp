@@ -16,6 +16,7 @@ using vi = std::vector<ll>;
 int n;
 map<int, int> m;
 
+// coordinate compression: maps each value to its rank among sorted values
 int32_t main() {
   cin.tie(0);
   cout.tie(0)->sync_with_stdio(0);

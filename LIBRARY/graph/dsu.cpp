@@ -20,10 +20,12 @@ struct DSU {
     sz = vector<int>(n + 10);
     for (int i = 0; i <= n; i++) par[i] = i, sz[i] = 1;
   }
+  // finds root of i with path compression
   int get(int i) {
     if (par[i] == i) return i;
     return par[i] = get(par[i]);
   }
+  // unites the sets containing a and b, by size
   bool unn(int a, int b) {
     a = get(a), b = get(b);
     if (a == b) return 0;
@@ -32,6 +34,7 @@ struct DSU {
     sz[a] += sz[b];
     return 1;
   }
+  // size of the set containing a
   int sze(int a) { return sz[get(a)]; }
 };
 

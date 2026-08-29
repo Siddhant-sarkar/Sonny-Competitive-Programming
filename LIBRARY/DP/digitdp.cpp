@@ -16,6 +16,7 @@ int a, b, d, k;
 vi num;
 int dp[12][12][2];
 
+// counts numbers with exactly k digits equal to d, digit by digit
 int call(int pos, int cnt, int f) {
   // terminating conditions
   if (cnt > k)
@@ -44,6 +45,7 @@ int call(int pos, int cnt, int f) {
   }
   return dp[cnt][pos][f] = res;
 }
+// counts valid numbers in [0, a] via digit dp
 int _dp(int a) {
   num.clear();
   while (a) {

@@ -41,6 +41,7 @@ node merge(node &a, node &b) {
   return rt;
 }
 // CRUD functions in segment Tree
+// builds the tree over a[l..r]
 void build(int x, int l, int r) {
   if (l == r) {
     tr[x] = node(a[l]);
@@ -51,6 +52,7 @@ void build(int x, int l, int r) {
   build(x << 1 | 1, m + 1, r);
   tr[x] = merge(tr[x << 1], tr[x << 1 | 1]);
 }
+// point update: sets index p to value v
 void update(int x, int l, int r, int p, int v) {
   if (p < l || p > r) return;
   if (l == r) {
@@ -65,6 +67,7 @@ void update(int x, int l, int r, int p, int v) {
     update(x << 1 | 1, m + 1, r, p, v);
   tr[x] = merge(tr[x << 1], tr[x << 1 | 1]);
 }
+// range query over [lq, rq], returns merged node (max subarray sum info)
 node query(int x, int l, int r, int lq, int rq) {
   if (rq < l || lq > r) return node(0);
   if (lq <= l && r <= rq) return tr[x];

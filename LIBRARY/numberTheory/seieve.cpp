@@ -19,6 +19,7 @@ constexpr ll INF = 1e18;
 struct SIEVE {
   vector<ll> sieve;
   vector<ll> primes;
+  // sieve of eratosthenes up to N, collects all primes
   SIEVE(ll N) {
     sieve = vector<ll>(N + 10);
     sieve[0] = sieve[1] = 1;
@@ -31,6 +32,7 @@ struct SIEVE {
       }
     }
   }
+  // returns the set of distinct prime factors of x
   set<ll> get(ll x) {
     set<ll> r;
     while (x != 1) {

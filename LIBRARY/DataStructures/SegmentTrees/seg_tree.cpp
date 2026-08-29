@@ -33,7 +33,8 @@ struct SEGTREE {
     tree = vector<node>(4 * N);
     build(ar, 1, 0, N - 1);
   }
-  void build(vi& ar, ll x, ll l, ll r) {
+  // builds the tree over ar[l..r]
+void build(vi& ar, ll x, ll l, ll r) {
     if (l == r) {
       tree[x] = node(ar[l]);
       return;
@@ -43,6 +44,7 @@ struct SEGTREE {
     build(ar, x << 1 | 1, m + 1, r);
     tree[x] = merge(tree[x << 1], tree[x << 1 | 1]);
   }
+  // point update: sets index p to value v
   void update(int x, int l, int r, int p, int v) {
     if (p < l || p > r) return;
     if (l == r) {
@@ -56,6 +58,7 @@ struct SEGTREE {
       update(x << 1 | 1, m + 1, r, p, v);
     tree[x] = merge(tree[x << 1], tree[x << 1 | 1]);
   }
+  // range query over [lq, rq]
   node query(int x, int l, int r, int lq, int rq) {
     if (rq < l || lq > r) return node();
     if (lq <= l && r <= rq) return tree[x];

@@ -17,6 +17,7 @@ const int N = 1e5 + 5;
 int n, q, a[N];
 multiset<int> seg[4 * N + 5];
 
+// builds merge-sort tree: each node holds a sorted multiset of its range
 void build(int x, int lt, int rt) {
   if (lt == rt) {
     seg[x].insert(a[lt]);
@@ -27,6 +28,7 @@ void build(int x, int lt, int rt) {
   build(x * 2 + 1, mid + 1, rt);
   for (int i = lt; i <= rt; i++) seg[x].insert(a[i]);
 }
+// point update: replaces value at index p with v in every covering node
 void update(int x, int lt, int rt, int p, int v) {
   if (lt == rt) {
     seg[x].erase(a[p]);
@@ -42,6 +44,7 @@ void update(int x, int lt, int rt, int p, int v) {
   seg[x].insert(v);
   return;
 }
+// smallest value >= x within range [lx, rx]
 int query(int node, int l, int r, int lx, int rx, int x) {
   if (l > rx || r < lx) return INT_MAX;
   if (l >= lx && r <= rx) {

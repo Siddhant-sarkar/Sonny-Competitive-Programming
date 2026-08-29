@@ -20,6 +20,7 @@ int main() {
   vector<bool> vis(n + 1);
   vector<int> par(n + 1, -1), top;
 
+  // DFS that appends nodes to top in post-order
   auto dfs = [&](auto&& dfs, int u, int p) -> void {
     vis[u] = 1;
     par[u] = p;
