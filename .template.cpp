@@ -21,14 +21,6 @@ using pii = std::pair<ll, ll>;
   cin.tie(0);                                                                  \
   ios::sync_with_stdio(false);
 
-// Debug - template import
-#ifndef ONLINE_JUDGE
-#include "bits/bug.hpp"
-#else
-#define debug(...)
-#define debugArr(...)
-#endif
-
 // I/O overloads
 template <typename T1, typename T2>
 ostream &operator<<(ostream &ostream, const pair<T1, T2> &p) {
